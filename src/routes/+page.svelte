@@ -1,7 +1,5 @@
 <script>
 	import { enhance } from '$app/forms';
-	import { ExclamationCircle } from '@steeze-ui/heroicons';
-	import { Icon } from '@steeze-ui/svelte-icon';
 </script>
 
 <main class="container flex mx-auto h-dvh justify-center items-center">
@@ -15,9 +13,6 @@
 
 		<div class="input-group input-group-divider grid-cols-[1fr_auto]">
 			<input type="password" placeholder="Password" />
-			<a href="/" title="Username already in use.">
-				<Icon src={ExclamationCircle} theme="solid" class="text-warning-500 animate-pulse h-5" />
-			</a>
 		</div>
 
 		<button type="submit" class="btn variant-filled-primary">Login</button>
