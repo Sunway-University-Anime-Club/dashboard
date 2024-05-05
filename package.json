@@ -44,6 +44,7 @@
     "@floating-ui/dom": "1.6.5",
     "@steeze-ui/heroicons": "^2.3.0",
     "@steeze-ui/svelte-icon": "^1.5.0",
+    "@supabase/ssr": "^0.3.0",
     "@supabase/supabase-js": "^2.43.1",
     "drizzle-orm": "^0.30.10",
     "highlight.js": "11.9.0",
