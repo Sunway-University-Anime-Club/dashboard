@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals: { session } }) => {
@@ -15,7 +15,7 @@ export const actions = {
 
 		// Try to sign the user in with the provided email and password
 		const { error } = await supabase.auth.signInWithPassword({ email, password });
-		if (error) return {};
+		if (error) return fail(401, { message: 'Wrong email or password provided.' });
 		throw redirect(303, '/home');
 	}
 } satisfies Actions;

@@ -45,6 +45,11 @@
 
 		return () => data.subscription.unsubscribe();
 	});
+
+	// Set up toast
+	import { initializeStores, Toast } from '@skeletonlabs/skeleton';
+	initializeStores();
 </script>
 
+<Toast />
 <slot />
