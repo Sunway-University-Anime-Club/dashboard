@@ -2,7 +2,8 @@ import { createServerClient } from '@supabase/ssr/dist';
 import { type Handle, redirect } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 
-import { PUBLIC_SUPABASE_KEY, PUBLIC_SUPABASE_URI } from '$env/static/public';
+import { SUPABASE_SERVICE_KEY } from '$env/static/private';
+import { PUBLIC_SUPABASE_URI } from '$env/static/public';
 
 const supabase: Handle = async ({ event, resolve }) => {
 	/**
@@ -10,7 +11,7 @@ const supabase: Handle = async ({ event, resolve }) => {
 	 *
 	 * The Supabase client gets the Auth token from the request cookies.
 	 */
-	event.locals.supabase = createServerClient(PUBLIC_SUPABASE_URI, PUBLIC_SUPABASE_KEY, {
+	event.locals.supabase = createServerClient(PUBLIC_SUPABASE_URI, SUPABASE_SERVICE_KEY, {
 		cookies: {
 			get: (key) => event.cookies.get(key),
 			/**
