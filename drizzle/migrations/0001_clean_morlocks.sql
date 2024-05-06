@@ -1,0 +1,1 @@
+ALTER TABLE "activities" ALTER COLUMN "name" SET DATA TYPE varchar(32);

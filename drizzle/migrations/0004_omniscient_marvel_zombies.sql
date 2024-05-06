@@ -1,0 +1,1 @@
+ALTER TABLE "activities" ALTER COLUMN "examples" SET NOT NULL;

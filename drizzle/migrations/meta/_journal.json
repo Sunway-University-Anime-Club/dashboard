@@ -8,6 +8,34 @@
       "when": 1714933990477,
       "tag": "0000_fast_synch",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1714934611471,
+      "tag": "0001_clean_morlocks",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1714934972938,
+      "tag": "0002_bored_black_cat",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1715006255596,
+      "tag": "0003_dizzy_redwing",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1715006477485,
+      "tag": "0004_omniscient_marvel_zombies",
+      "breakpoints": true
     }
   ]
 }
