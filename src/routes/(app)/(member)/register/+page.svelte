@@ -1,13 +1,42 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { popup } from '@skeletonlabs/skeleton';
+	import { getToastStore, popup, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { ExclamationCircle } from '@steeze-ui/heroicons';
 	import { Icon } from '@steeze-ui/svelte-icon';
+	import type { SubmitFunction } from './$types.js';
 
 	export let data;
 
 	let phone: string | undefined;
 	let selected: string;
+
+	const toastStore = getToastStore();
+
+	const submitter: SubmitFunction = async () => {
+		return async ({ result, update }) => {
+			const toast: ToastSettings = {
+				message: '',
+				background: 'variant-filled-success',
+				hoverable: true,
+				timeout: 5000
+			};
+
+			switch (result.type) {
+				case 'failure': {
+					toast.message = result.data!.message;
+					toast.background = 'variant-filled-error';
+					break;
+				}
+				case 'success': {
+					toast.message = result.data!.message;
+					break;
+				}
+			}
+
+			toastStore.trigger(toast);
+			return update({ reset: result.type === 'success' });
+		};
+	};
 </script>
 
 <section class="container mx-auto flex justify-center items-center min-h-dvh">
@@ -16,7 +45,7 @@
 		method="post"
 		class="card variant-soft p-10 grid gap-5 m-10"
 		enctype="multipart/form-data"
-		use:enhance
+		use:enhance={submitter}
 	>
 		<header class="mb-2">
 			<h1 class="h1 mb-2">Member Registration</h1>
