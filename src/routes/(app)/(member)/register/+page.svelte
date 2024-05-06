@@ -285,7 +285,7 @@
 		</div>
 
 		<div class="flex gap-5">
-			<button type="reset" class="btn variant-filled-error w-full">Clear</button>
+			<button type="reset" class="btn variant-filled-warning w-full">Clear</button>
 			<button type="submit" class="btn variant-filled-primary w-full">Submit</button>
 		</div>
 	</form>
