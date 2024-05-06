@@ -40,7 +40,7 @@
 	<form
 		action="?/login"
 		method="post"
-		class="card variant-soft p-5 grid gap-5 bg-"
+		class="card variant-soft p-5 grid gap-5"
 		use:enhance={submitter}
 	>
 		<h1 class="h1 mb-5">Login</h1>
