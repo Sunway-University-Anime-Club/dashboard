@@ -50,6 +50,7 @@
 		"@steeze-ui/svelte-icon": "^1.5.0",
 		"@supabase/ssr": "^0.3.0",
 		"@supabase/supabase-js": "^2.43.1",
+		"@vincjo/datatables": "^1.14.5",
 		"drizzle-orm": "^0.30.10",
 		"highlight.js": "11.9.0",
 		"postgres": "^3.4.4"
