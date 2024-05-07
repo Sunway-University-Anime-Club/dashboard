@@ -59,7 +59,7 @@ export const actions = {
 			.from('proof_of_payments')
 			.upload(`/payments/Payment_${studentId}_${fullName}.${ext}`, pop, {
 				cacheControl: '3600',
-				contentType: 'image/png'
+				contentType: pop.type
 			});
 		if (err) return fail(400, { message: err.message });
 
