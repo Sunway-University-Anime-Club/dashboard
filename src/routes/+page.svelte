@@ -33,6 +33,7 @@
 		};
 	};
 
+	export let data;
 	export let form;
 </script>
 
@@ -46,8 +47,8 @@
 		<h1 class="h1 mb-5">Login</h1>
 
 		<div class="input-group input-group-divider grid-cols-[auto_1fr_auto]">
-			<input type="text" placeholder="Username" name="email" id="email" required />
-			<div class="input-group-shim">@sunwayanime.com</div>
+			<input type="text" placeholder="Username" name="username" id="username" required />
+			<div class="input-group-shim">@{data.emailSuffix}</div>
 		</div>
 
 		<div class="input-group input-group-divider grid-cols-[1fr_auto]">
