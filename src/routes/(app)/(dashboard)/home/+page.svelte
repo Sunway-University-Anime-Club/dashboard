@@ -1,8 +1,9 @@
-<script>
-	import { enhance } from '$app/forms';
+<script lang="ts">
+	import Datatable from '$lib/components/Datatable.svelte';
+
+	export let data;
 </script>
 
-<h1 class="h1">Home</h1>
-<form action="?/logout" method="post" use:enhance>
-	<button type="submit">Logout</button>
-</form>
+<h1 class="h1 mb-10">Members</h1>
+
+<Datatable members={data.members} />
