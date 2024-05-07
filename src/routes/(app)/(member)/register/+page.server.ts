@@ -38,13 +38,6 @@ export const actions = {
 			.map((key) => parseInt(key.split('-').pop()?.trim() ?? ''))
 			.filter((key) => typeof key !== 'undefined' || !isNaN(key));
 
-		// Create the bucket for proof of payments if not found
-		const { error } = await supabase.storage.getBucket('proof_of_payments');
-		if (error && error.message === 'Bucket not found') {
-			const { error } = await supabase.storage.createBucket('proof_of_payments', { public: true });
-			if (error) return fail(400, { message: error.message });
-		}
-
 		// Form the full name
 		const firstName = rawData['firstName'].toString().trim();
 		const surname = rawData['surname'].toString().trim();
@@ -61,7 +54,7 @@ export const actions = {
 				cacheControl: '3600',
 				contentType: pop.type
 			});
-		if (err) return fail(400, { message: err.message });
+		if (err) return fail(parseInt(Object(err).statusCode) ?? 400, { message: err.message });
 
 		// Get the public url of the uploaded file
 		const {
@@ -83,13 +76,16 @@ export const actions = {
 					favHusbandoWaifu: rawData['favHusWaifu'].toString().trim()
 				});
 
-				await tx
-					.insert(memberInterestedActivities)
-					.values(activityIds.map((activityId) => ({ studentId, activityId })));
+				if (activityIds.length > 0) {
+					await tx
+						.insert(memberInterestedActivities)
+						.values(activityIds.map((activityId) => ({ studentId, activityId })));
+				}
 			})
 			.then(() => ({ message: 'You have been registered!' }))
-			.catch((e) => {
+			.catch(async (e) => {
 				console.error(e);
+				await supabase.storage.from('proof_of_payments').remove([data.path]);
 				return fail(400, { message: 'Something went wrong saving your data. Please try again.' });
 			});
 	}
