@@ -31,8 +31,8 @@
 		<!-- --- -->
 		<svelte:fragment slot="trail">
 			<AppRailAnchor class="cursor-pointer">
-				<form action="/home?/logout" method="post" use:enhance class="variant-filled-error py-5">
-					<button type="submit">
+				<form action="/home?/logout" method="post" use:enhance>
+					<button type="submit" class="variant-filled-error p-5">
 						<Icon src={ArrowLeftStartOnRectangle} size="25" theme="solid" class="mx-auto" />
 						<span>Logout</span>
 					</button>
