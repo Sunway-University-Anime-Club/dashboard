@@ -1,6 +1,5 @@
 import { db } from '$lib/server/db';
-import { fail } from '@sveltejs/kit';
-import type { Actions, PageServerLoad } from './$types';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
 	const members = await db.query.members.findMany({
@@ -29,10 +28,3 @@ export const load: PageServerLoad = async () => {
 		})
 	};
 };
-
-export const actions = {
-	logout: async ({ locals: { supabase } }) => {
-		const { error } = await supabase.auth.signOut();
-		if (error) return fail(400, { message: error.message });
-	}
-} satisfies Actions;

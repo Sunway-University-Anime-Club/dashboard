@@ -23,5 +23,9 @@ export const actions = {
 		const { error } = await supabase.auth.signInWithPassword({ email, password });
 		if (error) return fail(401, { message: 'Wrong email or password provided.' });
 		throw redirect(303, '/home');
+	},
+	logout: async ({ locals: { supabase } }) => {
+		const { error } = await supabase.auth.signOut();
+		if (error) return fail(400, { message: error.message });
 	}
 } satisfies Actions;
