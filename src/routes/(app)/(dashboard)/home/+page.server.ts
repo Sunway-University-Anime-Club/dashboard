@@ -1,5 +1,5 @@
 import { db } from '$lib/server/db';
-import { fail, redirect } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
@@ -34,6 +34,5 @@ export const actions = {
 	logout: async ({ locals: { supabase } }) => {
 		const { error } = await supabase.auth.signOut();
 		if (error) return fail(400, { message: error.message });
-		throw redirect(303, '/');
 	}
 } satisfies Actions;
