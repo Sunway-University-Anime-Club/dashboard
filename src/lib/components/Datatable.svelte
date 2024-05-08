@@ -9,6 +9,7 @@
 	import { DataHandler } from '@vincjo/datatables';
 
 	export let members;
+	export let yearFilters: string[];
 
 	// Init data handler - CLIENT
 	const handler = new DataHandler(members, { rowsPerPage: 5 });
@@ -37,7 +38,7 @@
 					<ThSort {handler} orderBy="favHusbandoWaifu">Favourite Husbando/Waifu</ThSort>
 				</tr>
 				<tr>
-					<ThFilter {handler} filterBy="registerationDate" />
+					<ThFilter {handler} filterBy="registerationDate" availableFilters={yearFilters} />
 					<ThFilter {handler} filterBy="studentId" />
 					<ThFilter {handler} filterBy="firstName" />
 					<ThFilter {handler} filterBy="lastName" />

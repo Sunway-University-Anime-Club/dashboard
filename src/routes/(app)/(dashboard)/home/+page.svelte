@@ -6,4 +6,4 @@
 
 <h1 class="h1 mb-10">Members</h1>
 
-<Datatable members={data.members} />
+<Datatable members={data.members} yearFilters={data.yearFilters} />
