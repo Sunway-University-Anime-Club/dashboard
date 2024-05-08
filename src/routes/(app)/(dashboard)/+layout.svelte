@@ -9,7 +9,9 @@
 <div class="container mx-auto">
 	<AppRail class="hidden lg:grid fixed top-0 left-0" height="h-dvh">
 		<svelte:fragment slot="lead">
-			<AppRailAnchor href="/">(icon)</AppRailAnchor>
+			<AppRailAnchor href="/">
+				<img src="/suac.png" alt="suac logo" class="w-1/2 mx-auto" />
+			</AppRailAnchor>
 		</svelte:fragment>
 		<!-- --- -->
 		<AppRailAnchor href="/home" selected={$page.url.pathname === '/home'}>
@@ -17,16 +19,6 @@
 				<Icon src={UserGroup} size="25" theme="solid" class="mx-auto" />
 			</svelte:fragment>
 			<span>Members</span>
-		</AppRailAnchor>
-
-		<AppRailAnchor href="/" selected={$page.url.pathname === '/'}>
-			<svelte:fragment slot="lead">(icon)</svelte:fragment>
-			<span>(label)</span>
-		</AppRailAnchor>
-
-		<AppRailAnchor href="/" selected={$page.url.pathname === '/'}>
-			<svelte:fragment slot="lead">(icon)</svelte:fragment>
-			<span>(label)</span>
 		</AppRailAnchor>
 		<!-- --- -->
 		<svelte:fragment slot="trail">
@@ -61,13 +53,13 @@
 		</svelte:fragment>
 		<span>Members</span>
 	</TabAnchor>
-	<TabAnchor href="/" selected={$page.url.pathname === '/'}>
-		<svelte:fragment slot="lead">(icon)</svelte:fragment>
-		<span>(label)</span>
-	</TabAnchor>
-	<TabAnchor href="/" selected={$page.url.pathname === '/'}>
-		<svelte:fragment slot="lead">(icon)</svelte:fragment>
-		<span>(label)</span>
+	<TabAnchor class="!p-0 m-auto variant-filled-error">
+		<form action="/?/logout" method="POST" use:enhance>
+			<button type="submit" class="variant-filled-error w-full py-3">
+				<Icon src={ArrowLeftStartOnRectangle} size="25" theme="solid" class="mx-auto" />
+				<span>Logout</span>
+			</button>
+		</form>
 	</TabAnchor>
 	<!-- ... -->
 </TabGroup>
