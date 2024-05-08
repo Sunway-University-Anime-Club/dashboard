@@ -1,4 +1,4 @@
-import { db } from '$lib/server/db';
+import { fetchMembers } from '$lib/utils';
 import type { PageServerLoad } from './$types';
 
 const formatDate = (date: Date) => {
@@ -28,20 +28,7 @@ const formatDate = (date: Date) => {
 };
 
 export const load: PageServerLoad = async () => {
-	const members = await db.query.members.findMany({
-		with: {
-			memberInterestedActivities: {
-				columns: {},
-				with: {
-					activity: {
-						columns: {
-							id: false
-						}
-					}
-				}
-			}
-		}
-	});
+	const members = await fetchMembers();
 
 	return {
 		members: members.map((member) => {
